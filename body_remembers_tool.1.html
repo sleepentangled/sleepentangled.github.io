@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Body Remembers — Assessment Tool</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --charcoal:      #2b2b2b;
+    --charcoal-deep: #1a1a1a;
+    --charcoal-mid:  #3d3d3d;
+    --gold:          #f5c842;
+    --gold-soft:     #fdf0b0;
+    --gold-pale:     #fdf8e8;
+    --cream:         #faf8f4;
+    --cream-mid:     #f3ede4;
+    --text:          #2b2b2b;
+    --text-soft:     #6b6560;
+    --text-muted:    #9a9390;
+    --white:         #ffffff;
+    --border:        rgba(43,43,43,0.12);
+    --border-gold:   rgba(245,200,66,0.4);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--charcoal-deep);
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 3px solid var(--gold);
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(245,200,66,0.06) 0%, transparent 70%),
+                radial-gradient(ellipse at 80% 10%, rgba(245,200,66,0.04) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .header-eyebrow {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 300;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.85;
+    margin-bottom: 1.2rem;
+  }
+  .header h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 400;
+    color: var(--white);
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+  .header h1 em {
+    color: var(--gold);
+    font-style: italic;
+  }
+  .header-sub {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.55);
+    font-weight: 400;
+    font-style: italic;
+    margin-top: 0.75rem;
+  }
+
+  /* ── PROGRESS ── */
+  .progress-bar-wrap {
+    background: rgba(255,255,255,0.08);
+    height: 2px;
+    margin-top: 2.25rem;
+  }
+  .progress-bar {
+    height: 2px;
+    background: var(--gold);
+    transition: width 0.6s ease;
+    width: 0%;
+  }
+  .progress-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.3);
+    text-align: right;
+    margin-top: 0.5rem;
+  }
+
+  /* ── CONTAINER ── */
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 1.5rem 4rem;
+  }
+
+  /* ── SECTIONS ── */
+  .section { display: none; animation: fadeUp 0.5s ease both; }
+  .section.active { display: block; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── INTRO CARD ── */
+  .intro-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 2.5rem;
+    margin-top: 2.5rem;
+    position: relative;
+  }
+  .intro-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--gold);
+    border-radius: 2px 0 0 2px;
+  }
+  .intro-card p {
+    font-family: 'Lora', serif;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 1.2rem;
+  }
+  .intro-card p:last-of-type { margin-bottom: 0; }
+  .intro-card strong { color: var(--charcoal-deep); font-weight: 600; }
+
+  .disclaimer {
+    background: var(--gold-pale);
+    border: 1px solid var(--border-gold);
+    border-radius: 2px;
+    padding: 1rem 1.25rem;
+    margin-top: 1.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--text-soft);
+    letter-spacing: 0.01em;
+  }
+
+  /* ── QUESTION BLOCK ── */
+  .question-block { margin-top: 2rem; }
+
+  .section-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.25rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border-gold);
+  }
+  .section-label:first-child { border-top: none; padding-top: 0; }
+
+  .question {
+    margin-bottom: 1.25rem;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 1.25rem 1.5rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .question:hover {
+    border-color: rgba(245,200,66,0.5);
+    box-shadow: 0 2px 12px rgba(43,43,43,0.06);
+  }
+  .question-text {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 1rem;
+    font-style: italic;
+  }
+  .options {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .option-btn {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    padding: 0.45rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 1px;
+    background: transparent;
+    color: var(--text-soft);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .option-btn:hover {
+    border-color: var(--gold);
+    color: var(--charcoal);
+    background: var(--gold-pale);
+  }
+  .option-btn.selected {
+    background: var(--charcoal);
+    border-color: var(--charcoal);
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  /* ── BUTTONS ── */
+  .btn-primary {
+    display: inline-block;
+    background: var(--charcoal);
+    color: var(--gold);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 1px;
+    cursor: pointer;
+    transition: all 0.25s;
+    margin-top: 2rem;
+  }
+  .btn-primary:hover {
+    background: var(--charcoal-deep);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(43,43,43,0.2);
+  }
+  .btn-secondary {
+    display: inline-block;
+    background: transparent;
+    color: var(--charcoal);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 1rem 2rem;
+    border: 1px solid var(--charcoal);
+    border-radius: 1px;
+    cursor: pointer;
+    transition: all 0.25s;
+    margin-top: 1rem;
+    margin-left: 1rem;
+  }
+  .btn-secondary:hover {
+    background: var(--cream-mid);
+    border-color: var(--gold);
+    color: var(--charcoal-deep);
+  }
+
+  /* ── RESULTS ── */
+  .result-header {
+    padding: 2.5rem 0 1rem;
+    border-bottom: 2px solid var(--gold);
+    margin-bottom: 2rem;
+  }
+  .result-header h2 {
+    font-family: 'Lora', serif;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 400;
+    color: var(--charcoal-deep);
+    line-height: 1.2;
+  }
+  .result-header h2 em { color: var(--charcoal); font-style: italic; }
+
+  /* Pattern card */
+  .pattern-card {
+    background: var(--charcoal-deep);
+    color: var(--white);
+    border-radius: 2px;
+    padding: 2rem 2.25rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    border-left: 4px solid var(--gold);
+  }
+  .pattern-card::after {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(245,200,66,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .pattern-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.85;
+    margin-bottom: 0.75rem;
+  }
+  .pattern-name {
+    font-family: 'Lora', serif;
+    font-size: clamp(1.3rem, 3vw, 1.9rem);
+    font-weight: 400;
+    margin-bottom: 0.35rem;
+    color: var(--white);
+  }
+  .pattern-latin {
+    font-family: 'Lora', serif;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--gold-soft);
+    opacity: 0.8;
+    margin-bottom: 1.25rem;
+  }
+  .pattern-desc {
+    font-family: 'Lora', serif;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.75);
+    font-weight: 400;
+  }
+
+  /* Score bars */
+  .score-bar-wrap {
+    margin: 1.25rem 0 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .score-bar-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.45);
+    min-width: 64px;
+  }
+  .score-bar-track {
+    flex: 1;
+    height: 3px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .score-bar-fill {
+    height: 100%;
+    background: var(--gold);
+    border-radius: 2px;
+    transition: width 1s ease 0.3s;
+    width: 0;
+  }
+  .score-bar-value {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: var(--gold-soft);
+    min-width: 36px;
+    text-align: right;
+  }
+
+  /* Organ section */
+  .organ-section { margin-bottom: 2rem; }
+  .organ-section h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border-gold);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .organ-section h3::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border-gold);
+  }
+  .organ-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    transition: border-color 0.2s;
+  }
+  .organ-card:hover { border-color: var(--border-gold); }
+  .organ-time {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--charcoal);
+    background: var(--gold-pale);
+    border: 1px solid var(--border-gold);
+    padding: 0.3rem 0.5rem;
+    border-radius: 1px;
+    white-space: nowrap;
+    margin-top: 0.15rem;
+    min-width: 74px;
+    text-align: center;
+  }
+  .organ-content { flex: 1; }
+  .organ-name {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--charcoal-deep);
+    margin-bottom: 0.35rem;
+  }
+  .organ-signal {
+    font-family: 'Lora', serif;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: var(--text-soft);
+    font-style: italic;
+    margin-bottom: 0.6rem;
+  }
+  .organ-action {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 300;
+    line-height: 1.65;
+    color: var(--text);
+  }
+  .organ-action strong {
+    color: var(--charcoal-deep);
+    font-weight: 600;
+  }
+
+  /* Priority tags */
+  .priority-tag {
+    display: inline-block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.58rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.65rem;
+    border-radius: 1px;
+    margin-bottom: 0.5rem;
+  }
+  .priority-high {
+    background: rgba(43,43,43,0.07);
+    color: var(--charcoal-deep);
+    border: 1px solid rgba(43,43,43,0.2);
+  }
+  .priority-med {
+    background: var(--gold-pale);
+    color: var(--text-soft);
+    border: 1px solid var(--border-gold);
+  }
+
+  /* Protocol box */
+  .protocol-box {
+    background: var(--charcoal-deep);
+    border-radius: 2px;
+    padding: 1.75rem 2rem;
+    margin: 2rem 0;
+    border-left: 4px solid var(--gold);
+  }
+  .protocol-box h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(245,200,66,0.2);
+  }
+  .protocol-item {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.8);
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    gap: 1rem;
+  }
+  .protocol-item:last-child { border-bottom: none; }
+  .protocol-time {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: var(--gold);
+    opacity: 0.85;
+    min-width: 52px;
+    padding-top: 0.2rem;
+    flex-shrink: 0;
+  }
+
+  /* Closing note */
+  .closing-note {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    border-top: 1px solid var(--border-gold);
+    margin-top: 2.5rem;
+  }
+  .closing-note p {
+    font-family: 'Lora', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--text-soft);
+    line-height: 1.85;
+    max-width: 480px;
+    margin: 0 auto 1.5rem;
+  }
+  .closing-note .brand {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 300;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 600px) {
+    .header { padding: 2rem 1.25rem 1.5rem; }
+    .intro-card { padding: 1.75rem 1.25rem; }
+    .organ-card { flex-direction: column; gap: 0.5rem; }
+    .organ-time { align-self: flex-start; }
+    .btn-secondary { margin-left: 0; display: block; }
+    .options { gap: 0.4rem; }
+  }
+</style>
+</head>
+
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-eyebrow">Sleep Entangled · Bio-Regulation Protocol</div>
+  <h1>The Body <em>Remembers</em></h1>
+  <div class="header-sub">A clinical assessment of your regulatory patterns</div>
+  <div class="progress-bar-wrap">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+  <div class="progress-label" id="progressLabel"></div>
+</div>
+
+<div class="container">
+
+  <!-- ══ SECTION 0: INTRO ══ -->
+  <div class="section active" id="section-intro">
+    <div class="intro-card">
+      <p>This assessment is based on <strong>over twenty years of integrative clinical practice</strong> — where modern medical science and traditional medicine converge into a single, integrative clinical framework.</p>
+      <p>Answer honestly. There are no wrong answers. The goal is not diagnosis — it is <strong>pattern recognition</strong>. Understanding where your regulatory system is under pressure, and where to begin.</p>
+      <p>The assessment takes approximately <strong>5–7 minutes</strong>. Your result will identify your primary regulatory pattern, the organ windows most likely to be affected, and the first practical steps of the protocol.</p>
+      <div class="disclaimer">
+        This tool is for educational purposes only. It does not constitute medical diagnosis or clinical advice. If you have concerns about your health, please consult a qualified healthcare professional.
+      </div>
+    </div>
+    <button class="btn-primary" onclick="goToSection('section-sleep')">Begin the Assessment →</button>
+  </div>
+
+  <!-- ══ SECTION 1: SLEEP ══ -->
+  <div class="section" id="section-sleep">
+    <div class="question-block">
+      <div class="section-label">Sleep Patterns</div>
+
+      <div class="question" id="q1">
+        <div class="question-text">I fall asleep easily but wake between 1:00 and 3:00 AM — often with racing thoughts or a sense of unresolved tension I cannot name.</div>
+        <div class="options">
+          <button class="option-btn" onclick="setScore('q1',0,this)">Never</button>
+          <button class="option-btn" onclick="setScore('q1',1,this)">Occasionally</button>
+          <button class="option-btn" onclick="setScore('q1',2,this)">Frequently</button>
+        </div>
+      </div>
+
+      <div class="question" id="q2">
+        <div class="question-text">I lie awake between 11:00 PM and 1:00 AM — not anxious exactly, but unable to stop processing the day.</div>
+        <div class="options">
+          <button class="option-btn" onclick="setScore('q2',0,this)">Never</button>
+          <button class="option-btn" onclick="setScore('q2',1,this)">Occasionally</button>
+          <button class="option-btn" onclick="setScore('q2',2,this)">Frequently</button>
+        </div>
+      </div>
+
+      <div class="question" id="q3">
+        <div class="question-text">I wake between 3:00 and 5:00 AM — sometimes with a feeling of tightness in the chest, difficulty breathing deeply, or an inexplicable sadness.</div>
+        <div class="options">
+          <button class="option-btn" onclick="setScore('q3',0,this)">Never</button>
+          <button class="option-btn" onclick="setScore('q3',1,this)">Occasionally</button>
+          <button class="option-btn" onclick="setScore('q3',2,this)">Frequently</button>
+        </div>
+      </div>
+
+      <div class="question" id="q4">
+        <div class="question-text">I fall asleep easily but feel as though I have been active all night — dreams are vivid, exhausting, and I wake unrefreshed regardless of how long I slept.</div>
+        <div class="options">
+          <button class="option-btn" onclick="setScore('q4',0,this)">Never</button>
+          <button class="option-btn" onclick="setScore('q4',1,this)">Occasionally</button>
+          <button class="option-btn" onclick="setScore('q4',2,this)">Frequently</button>
+        </div>
+      </div>
+
+      <div class="question" id="q5">
+        <div class="question-text">I feel a "second wind" of alertness and energy arriving between 10:00 PM and midnight — even when I know I need to sleep.</div>
+        <div class="options">
+          <button class="option-btn" onclick="setScore('q5',0,this)">Never</button>
+          <button class="option-btn" onclick="setScore('q5',1,this)">Occasionally</button>
+          <button class="option-btn" onclick="setScore('q5',2,this)">Frequently</button>
+        </div>
+      </div>
+
+      <div class="section-label">Energy Patterns</div>
+
+      <div class="question" id="q6">
+        <div class="question-text">My energy collapses significantly after meals — particularly after lunch — regardless of what I ate.</div>
+        <div class="options">
+          <button class="option-btn" onclick="setScore('q6',0,this)">Never</button>
+          <button class="option-btn" onclick="setScore('q6',1,this)">Occasionally</button>
+          <button class="option-btn" onclick="setScore('q6',2,this)">Frequently</button>
+        </div>
+      </div>
+
+      <div class="question" id="q7">
+        <div class="question-text">I experience a reliable, bone-deep fatigue in the late afternoon (3:00–5:00 PM) that is not related to what I ate or how busy the day was.</div>
+        <div class="options">
+          <button class="option-btn" onclick="setScore('q7',0,this)">Never</button>
+          <button class="option-btn" onclick="setScore('q7',1,this)">Occasionally</button>
+          <button class="option-btn" onclick="setScore('q7',2,this)">Frequently</button>
+        </div>
+      </div>
+
+      <div class="question" id="q8">
+        <div class="question-text">I feel most mentally clear and energised late at night — my best thinking happens after 10:00 PM.</div>
+        <div class="options">
+          <button class="option-btn" onclick="setScore('q8',0,this)">Never</button>
+          <button class="option-btn" onclick="setScore('q8',1,this)">Occasionally</button>
+          <button class="option-btn" onclick="setScore('q8',2,this)">Frequently</button>
+        </div>
+      </div>
+
+      <div class="section-label">Physical Signals</div>
+
+      <div class="question" id="q9">
+        <div class="question-text">I carry chronic tension in my chest, shoulders, jaw or upper back that does not fully release even after rest.</div>
+        <div class="options">
+          <button class="option-btn" onclick="setScore('q9',0,this)">Never</button>
+          <button class="option-btn" onclick="setScore('q9',1,this)">Occasionally</button>
+          <button class="option-btn" onclick="setScore('q9',2,this)">Frequently</button>
+        </div>
+      </div>
+
+      <div class="question" id="q10">
+        <div class="question-text">I feel physically hot or restless in the evenings when I should be cooling down — heat that does not match the room temperature.</div>
+        <div class="options">
+          <button class="option-btn" onclick="setScore('q10',0,this)">Never</button>
+          <button class="option-btn" onclick="setScore('q10',1,this)">Occasionally</button>
+          <button class="option-btn" onclick="setScore('q10',2,this)">Frequently</button>
+        </div>
+      </div>
+
+      <div class="question" id="q11">
+        <div class="question-text">My hands and feet are persistently cold regardless of ambient temperature.</div>
+        <div class="options">
+          <button class="option-btn" onclick="setScore('q11',0,this)">Never</button>
+          <button class="option-btn" onclick="setScore('q11',1,this)">Occasionally</button>
+          <button class="option-btn" onclick="setScore('q11',2,this)">Frequently</button>
+        </div>
+      </div>
+
+      <div class="question" id="q12">
+        <div class="question-text">I experience digestive discomfort, bloating, or sluggishness after eating — particularly under stress.</div>
+        <div class="options">
+          <button class="option-btn" onclick="setScore('q12',0,this)">Never</button>
+          <button class="option-btn" onclick="setScore('q12',1,this)">Occasionally</button>
+          <button class="option-btn" onclick="setScore('q12',2,this)">Frequently</button>
+        </div>
+      </div>
+
+      <div class="section-label">Emotional Signals</div>
+
+      <div class="question" id="q13">
+        <div class="question-text">I am prone to irritability or a short emotional fuse — particularly in the late afternoon or evening — that feels disproportionate to its triggers.</div>
+        <div class="options">
+          <button class="option-btn" onclick="setScore('q13',0,this)">Never</button>
+          <button class="option-btn" onclick="setScore('q13',1,this)">Occasionally</button>
+          <button class="option-btn" onclick="setScore('q13',2,this)">Frequently</button>
+        </div>
+      </div>
+
+      <div class="question" id="q14">
+        <div class="question-text">I experience a general flatness or low motivation that I recognise as uncharacteristic — not quite depression, but a kind of grey depletion.</div>
+        <div class="options">
+          <button class="option-btn" onclick="setScore('q14',0,this)">Never</button>
+          <button class="option-btn" onclick="setScore('q14',1,this)">Occasionally</button>
+          <button class="option-btn" onclick="setScore('q14',2,this)">Frequently</button>
+        </div>
+      </div>
+
+      <div class="question" id="q15">
+        <div class="question-text">I find it genuinely difficult to relax — even in safe, quiet environments there is a quality of vigilance that does not fully switch off.</div>
+        <div class="options">
+          <button class="option-btn" onclick="setScore('q15',0,this)">Never</button>
+          <button class="option-btn" onclick="setScore('q15',1,this)">Occasionally</button>
+          <button class="option-btn" onclick="setScore('q15',2,this)">Frequently</button>
+        </div>
+      </div>
+
+    </div>
+    <button class="btn-primary" onclick="calculateResult()">See My Results →</button>
+  </div>
+
+  <!-- ══ SECTION 2: RESULTS ══ -->
+  <div class="section" id="section-results">
+    <!-- Dynamically populated -->
+  </div>
+
+</div>
+
+<script>
+const scores = {};
+
+function setScore(qid, val, btn) {
+  scores[qid] = val;
+  const btns = btn.parentElement.querySelectorAll('.option-btn');
+  btns.forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  updateProgress();
+}
+
+function updateProgress() {
+  const total = 15;
+  const answered = Object.keys(scores).length;
+  const pct = Math.round((answered / total) * 100);
+  document.getElementById('progressBar').style.width = pct + '%';
+  document.getElementById('progressLabel').textContent = answered + ' / ' + total + ' completed';
+}
+
+function goToSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function calculateResult() {
+  // Score mapping
+  // Pattern I (Sympathetic Lock / Stasis Vis Vitalis): q1,q2,q5,q8,q9,q10,q12,q13,q15
+  // Pattern II (Depletion / Deficientia Sanguinis): q4,q7,q11,q14
+  // Shared / Organ-specific: q3 (Lung), q6 (Spleen/Stomach)
+
+  const p1_keys = ['q1','q2','q5','q8','q9','q10','q12','q13','q15'];
+  const p2_keys = ['q4','q7','q11','q14'];
+
+  let p1 = 0, p2 = 0;
+  p1_keys.forEach(k => { if(scores[k]) p1 += scores[k]; });
+  p2_keys.forEach(k => { if(scores[k]) p2 += scores[k]; });
+
+  // Organ flags
+  const liver_flag   = (scores['q1'] || 0) >= 1;
+  const gb_flag      = (scores['q2'] || 0) >= 1;
+  const lung_flag    = (scores['q3'] || 0) >= 1;
+  const dream_flag   = (scores['q4'] || 0) >= 1;
+  const pericardium  = (scores['q5'] || 0) >= 1;
+  const spleen_flag  = (scores['q6'] || 0) >= 1;
+  const kidney_flag  = (scores['q7'] || 0) >= 1;
+
+  const p1_max = p1_keys.length * 2;
+  const p2_max = p2_keys.length * 2;
+  const p1_pct = Math.round((p1 / p1_max) * 100);
+  const p2_pct = Math.round((p2 / p2_max) * 100);
+
+  let primaryPattern, secondaryNote;
+  const diff = p1 - p2;
+
+  if (diff >= 4) {
+    primaryPattern = 'I';
+  } else if (diff <= -4) {
+    primaryPattern = 'II';
+  } else {
+    primaryPattern = 'mixed';
+  }
+
+  // Build result HTML
+  let html = `<div class="result-header">
+    <h2>Your Regulatory <em>Pattern</em></h2>
+  </div>`;
+
+  // Pattern card
+  if (primaryPattern === 'I') {
+    html += `<div class="pattern-card">
+      <div class="pattern-label">Primary Pattern Identified</div>
+      <div class="pattern-name">Stasis Vis Vitalis</div>
+      <div class="pattern-latin">Sympathetic Lock · Pattern I</div>
+      <div class="pattern-desc">Your regulatory system is not broken. It is stuck at maximum. The sympathetic nervous system — designed for short bursts of activation — has been running continuously, unable to complete its transition into parasympathetic rest. The heat, the tension, the wakefulness, the difficulty genuinely relaxing: these are not character traits. They are the signatures of a system that has not been given the conditions it needs to release.</div>
+      <div class="score-bar-wrap">
+        <div class="score-bar-label">Pattern I</div>
+        <div class="score-bar-track"><div class="score-bar-fill" id="bar1"></div></div>
+        <div class="score-bar-value">${p1_pct}%</div>
+      </div>
+      <div class="score-bar-wrap">
+        <div class="score-bar-label">Pattern II</div>
+        <div class="score-bar-track"><div class="score-bar-fill" id="bar2" style="background:rgba(250,255,0,0.35)"></div></div>
+        <div class="score-bar-value">${p2_pct}%</div>
+      </div>
+    </div>`;
+  } else if (primaryPattern === 'II') {
+    html += `<div class="pattern-card">
+      <div class="pattern-label">Primary Pattern Identified</div>
+      <div class="pattern-name">Deficientia Sanguinis</div>
+      <div class="pattern-latin">Neuro-Nutritive Depletion · Pattern II</div>
+      <div class="pattern-desc">Your regulatory system is not broken. It is running on insufficient substrate. The recovery cycles that replenish the nervous system — adequate deep sleep, complete digestion, genuine rest — have been chronically compromised. The fatigue that sleep does not touch, the dreams that exhaust rather than restore, the cold extremities, the flatness: these are not weakness. They are the precise signatures of a depleted system doing its best with what it has been given.</div>
+      <div class="score-bar-wrap">
+        <div class="score-bar-label">Pattern I</div>
+        <div class="score-bar-track"><div class="score-bar-fill" id="bar1" style="background:rgba(250,255,0,0.35)"></div></div>
+        <div class="score-bar-value">${p1_pct}%</div>
+      </div>
+      <div class="score-bar-wrap">
+        <div class="score-bar-label">Pattern II</div>
+        <div class="score-bar-track"><div class="score-bar-fill" id="bar2"></div></div>
+        <div class="score-bar-value">${p2_pct}%</div>
+      </div>
+    </div>`;
+  } else {
+    html += `<div class="pattern-card">
+      <div class="pattern-label">Primary Pattern Identified</div>
+      <div class="pattern-name">Mixed Presentation</div>
+      <div class="pattern-latin">Stasis + Deficientia · Combined Pattern</div>
+      <div class="pattern-desc">You are carrying elements of both patterns — which is, in clinical experience, the most common presentation in people with long-standing regulatory disruption. What often happens: a system that began in sympathetic lock gradually depletes its reserves as the activation continues without recovery. The burning clutch wears down the engine. The protocol addresses both simultaneously.</div>
+      <div class="score-bar-wrap">
+        <div class="score-bar-label">Pattern I</div>
+        <div class="score-bar-track"><div class="score-bar-fill" id="bar1"></div></div>
+        <div class="score-bar-value">${p1_pct}%</div>
+      </div>
+      <div class="score-bar-wrap">
+        <div class="score-bar-label">Pattern II</div>
+        <div class="score-bar-track"><div class="score-bar-fill" id="bar2"></div></div>
+        <div class="score-bar-value">${p2_pct}%</div>
+      </div>
+    </div>`;
+  }
+
+  // Organ windows
+  html += `<div class="organ-section"><h3>Your Organ Windows — Where the Pressure Shows</h3>`;
+
+  const organs = [];
+
+  if (gb_flag) organs.push({
+    time: '23:00–01:00',
+    name: 'Gallbladder — Vesica Fellea',
+    priority: 'high',
+    signal: scores['q2'] === 2 ? 'You frequently lie awake ruminating in this window — the day is not completing its transition.' : 'Occasional difficulty switching off in this window.',
+    action: '<strong>First intervention:</strong> A 5-minute written completion practice before bed — note tomorrow\'s pending decisions and today\'s unresolved tensions. Close the loops on paper so the nervous system can close them physiologically. No fat or cold food after 8:00 PM.'
+  });
+
+  if (liver_flag) organs.push({
+    time: '01:00–03:00',
+    name: 'Liver — Systema Hepaticum',
+    priority: 'high',
+    signal: scores['q1'] === 2 ? 'You wake frequently in this window — the liver\'s enzymatic peak is being disrupted by sympathetic activation.' : 'Occasional waking in this window.',
+    action: '<strong>First intervention:</strong> Evening meal finished by 8:00 PM — warm, light, no alcohol. A warm shower before dinner activates peripheral vasodilation and prepares hepatic blood flow. Morning Qigong to restore vagal tone.'
+  });
+
+  if (lung_flag) organs.push({
+    time: '03:00–05:00',
+    name: 'Lung — Systema Respiratorium',
+    priority: scores['q3'] === 2 ? 'high' : 'med',
+    signal: 'Waking in this window with respiratory tightness or unexplained sadness — the acid-base shift is disrupted.',
+    action: '<strong>First intervention:</strong> No cold food or drink after 6:00 PM. Warm inhalation if symptomatic. Consistent early sleep onset is the primary protection for this window.'
+  });
+
+  if (spleen_flag) organs.push({
+    time: '07:00–11:00',
+    name: 'Stomach & Spleen-Pancreas',
+    priority: scores['q6'] === 2 ? 'high' : 'med',
+    signal: 'Post-meal energy collapse — the digestive window is not receiving what it needs to complete its cycle efficiently.',
+    action: '<strong>First intervention:</strong> A warm cooked breakfast before 9:00 AM. No cold or raw food in the morning. A 10-minute walk after lunch to assist the digestive transition.'
+  });
+
+  if (kidney_flag) organs.push({
+    time: '15:00–17:00',
+    name: 'Kidney — Systema Renale',
+    priority: scores['q7'] === 2 ? 'high' : 'med',
+    signal: 'Late afternoon bone-deep fatigue — this is a constitutional reserve problem, not a sleep problem.',
+    action: '<strong>First intervention:</strong> A 10–20 minute horizontal rest after lunch. Mineral-rich hydration. Protect this window from high-demand work where possible. This pattern resolves over 4–6 weeks of consistent practice.'
+  });
+
+  if (dream_flag) organs.push({
+    time: 'All night',
+    name: 'Sleep Architecture — Pattern II',
+    priority: scores['q4'] === 2 ? 'high' : 'med',
+    signal: 'Dream-disturbed sleep without true restoration — insufficient tryptophan substrate for melatonin synthesis.',
+    action: '<strong>First intervention:</strong> A small warm protein-rich meal before 7:00 PM to provide tryptophan precursors. Bedroom below 19°C. Complete darkness. This is a nutritive problem, not a psychological one.'
+  });
+
+  if (pericardium) organs.push({
+    time: '19:00–21:00',
+    name: 'Pericardium — Transition Window',
+    priority: 'med',
+    signal: 'The sympathetic-to-parasympathetic transition is blocked — the second wind at 10 PM is its signature.',
+    action: '<strong>First intervention:</strong> The Faraday Hour — all notifications off, amber lighting, no screens from 7:00 PM. This is the most impactful single change available to most people.'
+  });
+
+  if (organs.length === 0) {
+    html += `<p style="font-style:italic;color:var(--text-soft);padding:1rem 0;">Your responses do not indicate strong organ window disruption at this time. Focus on maintaining the evening protocol as a preventive practice.</p>`;
+  } else {
+    organs.forEach(o => {
+      html += `<div class="organ-card">
+        <div class="organ-time">${o.time}</div>
+        <div class="organ-content">
+          <div class="priority-tag ${o.priority === 'high' ? 'priority-high' : 'priority-med'}">${o.priority === 'high' ? 'Priority' : 'Monitor'}</div>
+          <div class="organ-name">${o.name}</div>
+          <div class="organ-signal">${o.signal}</div>
+          <div class="organ-action">${o.action}</div>
+        </div>
+      </div>`;
+    });
+  }
+
+  html += `</div>`;
+
+  // Protocol summary
+  html += `<div class="protocol-box">
+    <h4>Your Starting Protocol — Tonight</h4>`;
+
+  if (primaryPattern === 'I' || primaryPattern === 'mixed') {
+    html += `
+    <div class="protocol-item"><div class="protocol-time">19:00</div><div>Faraday Hour begins — notifications off, amber lighting, no screens. The single highest-impact intervention for Pattern I.</div></div>
+    <div class="protocol-item"><div class="protocol-time">20:00</div><div>Warm, light meal — no alcohol, no fat, no cold food. Finished before 8:00 PM.</div></div>
+    <div class="protocol-item"><div class="protocol-time">20:30</div><div>Thermal Gradient Reset — hot foot bath (40–42°C) with cold compress on forehead. 15–20 minutes. This directly releases the sympathetic clutch.</div></div>
+    <div class="protocol-item"><div class="protocol-time">21:30</div><div>Completion practice — 5 minutes writing tomorrow's pending decisions and today's unresolved tensions.</div></div>
+    <div class="protocol-item"><div class="protocol-time">22:30</div><div>Horizontal. Still. Cervical spine neutral. 10 minutes before sleep. The glymphatic system needs this position to begin its work.</div></div>`;
+  } else {
+    html += `
+    <div class="protocol-item"><div class="protocol-time">18:30</div><div>Small warm protein-rich meal — bone broth, warm protein, collagen. Tryptophan precursors for melatonin synthesis. Earlier than Pattern I.</div></div>
+    <div class="protocol-item"><div class="protocol-time">19:00</div><div>Faraday Hour begins — notifications off, amber lighting, no screens.</div></div>
+    <div class="protocol-item"><div class="protocol-time">20:30</div><div>Modified Thermal Reset — hot foot bath with hot water bottle to lumbar region (no cold compress). Warmth into the constitutional reserve.</div></div>
+    <div class="protocol-item"><div class="protocol-time">22:00</div><div>Bedroom below 19°C. Complete darkness. No phone in the room.</div></div>
+    <div class="protocol-item"><div class="protocol-time">22:30</div><div>Horizontal. 10 minutes of stillness. The substrate for deep sleep is set by what you have done, not by what you do now.</div></div>`;
+  }
+
+  html += `</div>`;
+
+  // Closing
+  html += `<div class="closing-note">
+    <p>"The pattern you express is not your constitution. A dysbalance, an illness, is not a sentence — it is a challenge. The body remembers. It is our job to help it."</p>
+    <div class="brand">Sleep Entangled · The Body Remembers</div>
+  </div>`;
+
+  html += `<button class="btn-secondary" onclick="location.reload()" style="margin-top:1rem;margin-left:0">← Retake Assessment</button>`;
+
+  document.getElementById('section-results').innerHTML = html;
+  goToSection('section-results');
+  document.getElementById('progressBar').style.width = '100%';
+  document.getElementById('progressLabel').textContent = 'Assessment complete';
+
+  // Animate bars
+  setTimeout(() => {
+    const b1 = document.getElementById('bar1');
+    const b2 = document.getElementById('bar2');
+    if(b1) b1.style.width = p1_pct + '%';
+    if(b2) b2.style.width = p2_pct + '%';
+  }, 200);
+}
+</script>
+</body>
+</html>

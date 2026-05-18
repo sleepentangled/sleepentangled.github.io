@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Body Remembers — A Bio-Regulation Protocol | Sleep Entangled</title>
+<meta name="description" content="Your 3 AM waking is not insomnia. Your afternoon collapse is not weakness. The Body Remembers is a clinically grounded bio-regulation protocol bridging circadian neuroscience and Traditional Chinese Medicine.">
+<meta property="og:title" content="The Body Remembers — A Bio-Regulation Protocol">
+<meta property="og:description" content="A clinically grounded protocol for sleep, circadian health, and the body's own regulatory intelligence.">
+<meta property="og:type" content="product">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --charcoal:      #2b2b2b;
+    --charcoal-deep: #1a1a1a;
+    --charcoal-cover:#35302a;
+    --gold:          #f5c842;
+    --gold-dark:     #c8960a;
+    --gold-pale:     #fdf8e8;
+    --gold-soft:     #faefc8;
+    --cream:         #faf8f4;
+    --cream-mid:     #f3ede4;
+    --text:          #1a1a1a;
+    --text-soft:     #3d3830;
+    --text-muted:    #7a7470;
+    --white:         #ffffff;
+    --border:        rgba(43,43,43,0.12);
+    --border-gold:   rgba(245,200,66,0.45);
+    --max-w:         780px;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Lora', serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── UTILITIES ── */
+  .poppins { font-family: 'Poppins', sans-serif; }
+  .container { max-width: var(--max-w); margin: 0 auto; padding: 0 28px; }
+  .gold-rule { border: none; border-top: 1px solid var(--gold); margin: 0; }
+  .section-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    display: block;
+    margin-bottom: 0.6rem;
+  }
+
+  /* ── ANNOUNCEMENT BAR ── */
+  .announcement {
+    background: var(--charcoal-deep);
+    padding: 10px 28px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: rgba(255,255,255,0.7);
+  }
+  .announcement a {
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .announcement a:hover { text-decoration: underline; }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--charcoal-cover);
+    padding: 18px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--gold);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-brand {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 300;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+  }
+  .nav-cta {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    background: var(--gold);
+    color: var(--charcoal-deep);
+    padding: 9px 20px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .nav-cta:hover { background: #ffd84a; transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--charcoal-cover);
+    padding: 72px 28px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 80% 20%, rgba(245,200,66,0.05) 0%, transparent 60%),
+      radial-gradient(ellipse at 10% 80%, rgba(245,200,66,0.03) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    position: relative;
+  }
+  .hero-eyebrow {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 300;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.85;
+    margin-bottom: 20px;
+    display: block;
+  }
+  .hero-title {
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 400;
+    line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .hero-subtitle {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.06em;
+    margin-bottom: 36px;
+    line-height: 1.6;
+    max-width: 520px;
+  }
+  .hero-divider {
+    border: none;
+    border-top: 1px solid rgba(245,200,66,0.35);
+    margin: 36px 0;
+    max-width: 420px;
+  }
+  .hero-hook {
+    font-size: clamp(1.05rem, 2.5vw, 1.2rem);
+    font-weight: 400;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.75;
+    max-width: 580px;
+    margin-bottom: 40px;
+  }
+  .hero-hook em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .hero-cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    align-items: center;
+    margin-bottom: 36px;
+  }
+  .btn-primary {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    background: var(--gold);
+    color: var(--charcoal-deep);
+    padding: 16px 36px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, transform 0.15s;
+    white-space: nowrap;
+  }
+  .btn-primary:hover { background: #ffd84a; transform: translateY(-2px); }
+  .btn-secondary {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+  }
+  .btn-secondary:hover { color: rgba(255,255,255,0.85); border-color: rgba(255,255,255,0.5); }
+  .hero-price-note {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.04em;
+  }
+  .hero-credentials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 36px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .credential-tag {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.4);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 5px 12px;
+  }
+
+  /* ── INTRO STATEMENT ── */
+  .intro-statement {
+    background: var(--gold-pale);
+    border-top: 3px solid var(--gold);
+    border-bottom: 1px solid rgba(245,200,66,0.3);
+    padding: 44px 28px;
+  }
+  .intro-statement-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+  }
+  .intro-statement p {
+    font-size: clamp(1.05rem, 2.5vw, 1.2rem);
+    font-weight: 400;
+    color: var(--charcoal);
+    line-height: 1.85;
+    max-width: 640px;
+  }
+  .intro-statement p + p { margin-top: 18px; }
+  .intro-statement strong { font-weight: 600; }
+
+  /* ── SECTIONS ── */
+  section { padding: 72px 0; }
+  section + section { border-top: 1px solid var(--border); }
+
+  .section-head {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 400;
+    line-height: 1.25;
+    color: var(--charcoal);
+    margin-bottom: 20px;
+  }
+  .section-head em { font-style: italic; color: var(--text-soft); }
+
+  .section-body {
+    font-size: 1rem;
+    color: var(--text-soft);
+    line-height: 1.85;
+    max-width: 620px;
+  }
+  .section-body p + p { margin-top: 16px; }
+  .section-body strong { color: var(--charcoal); font-weight: 600; }
+
+  /* ── FOR YOU SECTION ── */
+  .for-you-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2px;
+    margin-top: 36px;
+    border: 2px solid var(--gold);
+  }
+  .for-you-item {
+    background: var(--white);
+    padding: 24px 26px;
+    position: relative;
+  }
+  .for-you-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--gold);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .for-you-item:hover::before { opacity: 1; }
+  .for-you-item p {
+    font-size: 0.95rem;
+    color: var(--text-soft);
+    line-height: 1.7;
+  }
+  .for-you-item p strong {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    margin-bottom: 6px;
+  }
+
+  /* ── WHAT'S INSIDE / CHAPTERS ── */
+  .chapters-bg { background: var(--cream-mid); }
+  .chapter-list { margin-top: 40px; }
+  .chapter-item {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 0 24px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+  }
+  .chapter-item:first-child { border-top: 1px solid var(--border); }
+  .chapter-num {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+    padding-top: 3px;
+  }
+  .chapter-content h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+  .chapter-content p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+  }
+
+  /* ── TOOLS GRID ── */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin-top: 36px;
+  }
+  .tool-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 20px 22px;
+    transition: border-color 0.2s, transform 0.15s;
+  }
+  .tool-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+  .tool-num {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    display: block;
+  }
+  .tool-card h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  .tool-card p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 300;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote-section {
+    background: var(--charcoal-cover);
+    padding: 64px 28px;
+    text-align: center;
+  }
+  .pull-quote-section blockquote {
+    max-width: 640px;
+    margin: 0 auto;
+    font-size: clamp(1.1rem, 2.8vw, 1.35rem);
+    font-style: italic;
+    font-weight: 400;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.75;
+  }
+  .pull-quote-section cite {
+    display: block;
+    margin-top: 20px;
+    font-style: normal;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+  }
+
+  /* ── AUTHOR ── */
+  .author-grid {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 40px;
+    align-items: start;
+    margin-top: 36px;
+  }
+  .author-initials {
+    width: 100px;
+    height: 100px;
+    background: var(--charcoal);
+    border: 2px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Lora', serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+  }
+  .author-bio p {
+    font-size: 0.95rem;
+    color: var(--text-soft);
+    line-height: 1.85;
+  }
+  .author-bio p + p { margin-top: 14px; }
+  .author-bio strong { color: var(--charcoal); font-weight: 600; }
+  .credential-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+  }
+  .cred-tag {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    background: var(--white);
+  }
+
+  /* ── THE SCIENCE NOTE ── */
+  .science-note {
+    background: var(--white);
+    border-left: 3px solid var(--gold);
+    padding: 20px 24px;
+    margin-top: 32px;
+  }
+  .science-note p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 300;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+  .science-note p strong {
+    font-weight: 500;
+    color: var(--text-soft);
+  }
+
+  /* ── BUY SECTION ── */
+  .buy-section {
+    background: var(--charcoal-deep);
+    padding: 80px 28px;
+  }
+  .buy-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+  }
+  .buy-card {
+    background: var(--charcoal-cover);
+    border: 1px solid rgba(245,200,66,0.25);
+    padding: 48px;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+  .buy-eyebrow {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 300;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.8;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .buy-title {
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+  .buy-title em { font-style: italic; color: var(--gold); }
+  .buy-subtitle {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 32px;
+  }
+  .buy-divider {
+    border: none;
+    border-top: 1px solid rgba(245,200,66,0.2);
+    margin: 28px 0;
+  }
+  .buy-includes {
+    list-style: none;
+    margin-bottom: 32px;
+  }
+  .buy-includes li {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    line-height: 1.5;
+  }
+  .buy-includes li::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    background: var(--gold);
+    flex-shrink: 0;
+    border-radius: 50%;
+  }
+  .buy-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  .buy-price {
+    font-size: 2.8rem;
+    font-weight: 400;
+    color: var(--white);
+    font-family: 'Lora', serif;
+    line-height: 1;
+  }
+  .buy-price-note {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.4;
+  }
+  .btn-buy {
+    display: block;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    background: var(--gold);
+    color: var(--charcoal-deep);
+    padding: 18px 28px;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    margin-bottom: 14px;
+  }
+  .btn-buy:hover { background: #ffd84a; transform: translateY(-1px); }
+  .buy-guarantee {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.3);
+    text-align: center;
+    line-height: 1.6;
+  }
+  .buy-free-link {
+    display: block;
+    text-align: center;
+    margin-top: 24px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.35);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    display: inline-block;
+    padding-bottom: 2px;
+    margin: 24px auto 0;
+    transition: color 0.2s;
+  }
+  .buy-free-link:hover { color: rgba(255,255,255,0.6); }
+  .buy-free-wrap { text-align: center; margin-top: 16px; }
+
+  /* ── FAQ ── */
+  .faq-list { margin-top: 36px; }
+  .faq-item {
+    padding: 22px 0;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+  }
+  .faq-item:first-child { border-top: 1px solid var(--border); }
+  .faq-question {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    line-height: 1.45;
+    user-select: none;
+  }
+  .faq-question::after {
+    content: '+';
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: var(--gold-dark);
+    flex-shrink: 0;
+    transition: transform 0.25s;
+  }
+  .faq-item.open .faq-question::after { transform: rotate(45deg); }
+  .faq-answer {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--text-muted);
+    line-height: 1.75;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    padding-top: 0;
+  }
+  .faq-item.open .faq-answer {
+    max-height: 300px;
+    padding-top: 12px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--charcoal-deep);
+    padding: 40px 28px;
+    border-top: 2px solid var(--gold);
+  }
+  .footer-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .footer-brand {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 300;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+  }
+  .footer-tagline {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.25);
+  }
+
+  /* ── STICKY CTA ── */
+  .sticky-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--charcoal-deep);
+    border-top: 2px solid var(--gold);
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    z-index: 99;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    flex-wrap: wrap;
+  }
+  .sticky-cta.visible { transform: translateY(0); }
+  .sticky-cta-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+  }
+  .sticky-cta-text strong {
+    font-weight: 500;
+    color: var(--white);
+  }
+  .btn-sticky {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    background: var(--gold);
+    color: var(--charcoal-deep);
+    padding: 11px 24px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.2s;
+    flex-shrink: 0;
+  }
+  .btn-sticky:hover { background: #ffd84a; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .author-grid { grid-template-columns: 1fr; gap: 24px; }
+    .buy-card { padding: 32px 24px; }
+    .hero { padding: 52px 20px 60px; }
+    .footer-inner { flex-direction: column; text-align: center; }
+    .sticky-cta { display: none; }
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-eyebrow { animation: fadeUp 0.6s ease both 0.1s; }
+  .hero-title   { animation: fadeUp 0.6s ease both 0.25s; }
+  .hero-subtitle{ animation: fadeUp 0.6s ease both 0.35s; }
+  .hero-divider { animation: fadeUp 0.5s ease both 0.45s; }
+  .hero-hook    { animation: fadeUp 0.6s ease both 0.5s; }
+  .hero-cta-group { animation: fadeUp 0.5s ease both 0.6s; }
+  .hero-credentials { animation: fadeUp 0.5s ease both 0.7s; }
+</style>
+</head>
+<body>
+
+<!-- Announcement bar -->
+<div class="announcement">
+  Also available: the free <a href="optin.html">7-Day Distress Signal Diary</a> — no purchase required
+</div>
+
+<!-- Nav -->
+<nav>
+  <a class="nav-brand" href="#">Sleep Entangled</a>
+  <a class="nav-cta" href="https://gumroad.com/l/thebodyremembers">Get the Book — $29</a>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-eyebrow">Sleep Entangled · Clinical Protocol</span>
+    <h1 class="hero-title">The Body<br><em>Remembers</em></h1>
+    <p class="hero-subtitle">A Bio-Regulation Protocol for Sleep, Circadian Health<br>and the Body's Own Regulatory Intelligence</p>
+    <hr class="hero-divider">
+    <p class="hero-hook">
+      Your 3 AM waking is <em>not</em> insomnia.<br>
+      Your afternoon collapse is <em>not</em> weakness.<br>
+      Your body is not broken. It is sending signals.
+    </p>
+    <div class="hero-cta-group">
+      <a class="btn-primary" href="https://gumroad.com/l/thebodyremembers">Get The Body Remembers — $29</a>
+      <a class="btn-secondary" href="optin.html">Or get the free 7-Day Diary first →</a>
+    </div>
+    <p class="hero-price-note">Instant PDF download · One-time payment · No subscription</p>
+    <div class="hero-credentials">
+      <span class="credential-tag">Biomedical Science</span>
+      <span class="credential-tag">Traditional Chinese Medicine</span>
+      <span class="credential-tag">Circadian Biology</span>
+      <span class="credential-tag">Clinical Thermography</span>
+      <span class="credential-tag">20+ Years Practice</span>
+    </div>
+  </div>
+</section>
+
+<!-- Intro statement -->
+<div class="intro-statement">
+  <div class="intro-statement-inner">
+    <p>
+      Western medicine is extraordinarily good at intervening in disease. It is much less practised at understanding
+      the body's own regulatory systems — the internal intelligence that, when functioning correctly, maintains health
+      <strong>without any intervention at all.</strong>
+    </p>
+    <p>
+      Traditional Chinese Medicine spent three thousand years mapping exactly that intelligence. Modern circadian
+      neuroscience has spent the last fifty years confirming it. <strong>This book puts both in your hands</strong> —
+      as a precise, actionable protocol you can begin tonight.
+    </p>
+  </div>
+</div>
+
+<!-- For you section -->
+<section>
+  <div class="container">
+    <span class="section-label">Who This Is For</span>
+    <h2 class="section-head">This book was written for you if</h2>
+    <div class="for-you-grid">
+      <div class="for-you-item">
+        <p><strong>You wake at 3 AM</strong>
+        Your mind activates before you've decided to be awake. You lie there, unable to return to quiet, wondering why this keeps happening. This book explains exactly why — and what to do about it.</p>
+      </div>
+      <div class="for-you-item">
+        <p><strong>You're exhausted but wired</strong>
+        You're tired by 6 PM but can't sleep until midnight. Or you collapse in the afternoon but get a second wind at 10 PM. These are not character flaws. They are a displaced circadian rhythm.</p>
+      </div>
+      <div class="for-you-item">
+        <p><strong>Your bloodwork is "normal"</strong>
+        You've been told nothing is wrong. But something clearly is. The gap between "no diagnosis" and "functioning well" is exactly the territory this framework was built to navigate.</p>
+      </div>
+      <div class="for-you-item">
+        <p><strong>You want to understand, not just follow</strong>
+        You're not looking for a list of supplements or a sleep hygiene checklist. You want to understand the mechanism — why the body works the way it does — so you can work with it intelligently.</p>
+      </div>
+      <div class="for-you-item">
+        <p><strong>You feel depleted in a way sleep doesn't fix</strong>
+        Waking unrefreshed regardless of how long you slept. Cold hands and feet. A flat emotional tone that feels like depletion rather than sadness. These are recognisable clinical patterns with specific solutions.</p>
+      </div>
+      <div class="for-you-item">
+        <p><strong>You've tried everything else</strong>
+        You've tracked sleep, tried magnesium, adjusted the thermostat, downloaded the apps. Some of it helped, temporarily. This book explains why those interventions work when they work — and why they stop.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pull quote -->
+<div class="pull-quote-section">
+  <blockquote>
+    "The body is not broken. The conditions have changed faster than the regulatory system can adapt. And the regulatory system, in the absence of the right cues, forgets what it knows. This protocol provides the cues."
+  </blockquote>
+  <cite>— The Body Remembers</cite>
+</div>
+
+<!-- Chapters -->
+<section class="chapters-bg">
+  <div class="container">
+    <span class="section-label">What's Inside</span>
+    <h2 class="section-head">Six chapters. One complete framework.</h2>
+    <div class="section-body">
+      <p>Each chapter builds on the last. By the end, you have a complete map of your own regulatory terrain — and a precise, clinically grounded protocol for returning it to balance.</p>
+    </div>
+    <div class="chapter-list">
+      <div class="chapter-item">
+        <span class="chapter-num">Intro</span>
+        <div class="chapter-content">
+          <h3>Your Body Is Not Broken</h3>
+          <p>The pivot point Western medicine misses. Why the ancient physician's model was built around prevention, not intervention. The self-assessment that orients everything that follows.</p>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <span class="chapter-num">Ch 1</span>
+        <div class="chapter-content">
+          <h3>The Architecture of Time</h3>
+          <p>The Nobel Prize-winning science of circadian biology. The Suprachiasmatic Nucleus and peripheral clocks. Why "breakfast like a king" is physiology, not folk wisdom. Your personalised Horarium map.</p>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <span class="chapter-num">Ch 2</span>
+        <div class="chapter-content">
+          <h3>Reading Your Body</h3>
+          <p>Interoception and the insular cortex. Why organ stress becomes emotional experience. The two primary regulatory patterns — Stasis Vis Vitalis and Deficientia Sanguinis — and the Pattern Identification Matrix.</p>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <span class="chapter-num">Ch 3</span>
+        <div class="chapter-content">
+          <h3>The Three Fires</h3>
+          <p>The Tri-Caloric System and the body's thermal regulation. Why cold food is not a neutral choice. The thermal gradient as the most direct clinical window into your regulatory state.</p>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <span class="chapter-num">Ch 4</span>
+        <div class="chapter-content">
+          <h3>Modern Pathogens</h3>
+          <p>The Six Evils translated into 21st-century disruptors. Ventus, Calor, Humiditas, Disruptio Lucis. The clinical progression from sympathetic lock to neuro-nutritive depletion. The Faraday Hour protocol.</p>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <span class="chapter-num">Ch 5</span>
+        <div class="chapter-content">
+          <h3>The Organ Compendium</h3>
+          <p>All twelve organ windows of the Horarium in full clinical detail. Biological mechanism, distress signals, what the signals mean, and the specific intervention for each window.</p>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <span class="chapter-num">Ch 6</span>
+        <div class="chapter-content">
+          <h3>The Evening Anchor</h3>
+          <p>The complete Bio-Regulation Protocol from 19:00 to waking. The Thermal Gradient Reset. Horizontal Integration and the glymphatic system. The Morning Anchor. The 7-day implementation schedule.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tools -->
+<section>
+  <div class="container">
+    <span class="section-label">Clinical Toolkit</span>
+    <h2 class="section-head">Chapter 7 — Eight tools for immediate use</h2>
+    <div class="section-body">
+      <p>The Quick Reference chapter contains eight standalone clinical tools designed to be used, not just read. These are the tools I use in practice.</p>
+    </div>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <span class="tool-num">Tool 1</span>
+        <h3>The Environmental Audit</h3>
+        <p>Score your five highest-impact disruptors and identify your priority intervention zone.</p>
+      </div>
+      <div class="tool-card">
+        <span class="tool-num">Tool 2</span>
+        <h3>Pattern Identification Matrix</h3>
+        <p>Scoreable assessment to identify your primary regulatory pattern before beginning the protocol.</p>
+      </div>
+      <div class="tool-card">
+        <span class="tool-num">Tool 3</span>
+        <h3>The Symptom Decoder</h3>
+        <p>Fifteen common experiences translated into their regulatory language, organ window, and pattern.</p>
+      </div>
+      <div class="tool-card">
+        <span class="tool-num">Tool 4</span>
+        <h3>The Distress Signal Diary</h3>
+        <p>Seven-day tracking grid to identify your repeating patterns. The signal that repeats is the one to address first.</p>
+      </div>
+      <div class="tool-card">
+        <span class="tool-num">Tool 5</span>
+        <h3>The 24-Hour Horarium</h3>
+        <p>Complete organ clock reference — all eleven windows with distress signals and specific interventions.</p>
+      </div>
+      <div class="tool-card">
+        <span class="tool-num">Tool 6</span>
+        <h3>The Daily Protocol</h3>
+        <p>Your complete timestamped sequence from waking to sleep, pattern-specific for I and II.</p>
+      </div>
+      <div class="tool-card">
+        <span class="tool-num">Tool 7</span>
+        <h3>The Thermal Gradient Reset</h3>
+        <p>Step-by-step quick reference for the protocol's most powerful single intervention.</p>
+      </div>
+      <div class="tool-card">
+        <span class="tool-num">Tool 8</span>
+        <h3>Troubleshooting</h3>
+        <p>Eight of the most common questions from clinical practice — what your body is telling you, and what to do.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Author -->
+<section style="background: var(--white);">
+  <div class="container">
+    <span class="section-label">About the Author</span>
+    <h2 class="section-head">Two disciplines.<br><em>Twenty years of practice.</em></h2>
+    <div class="author-grid">
+      <div class="author-initials">AIC</div>
+      <div class="author-bio">
+        <p>
+          <strong>Ana Isabel Correia</strong> is a Senior Specialist Biomedical Scientist and Traditional Chinese Medicine practitioner whose clinical work sits at the intersection of two disciplines that are rarely seen together.
+        </p>
+        <p>
+          She holds a BSc with Honours in Biomedical Sciences specialising in Cellular Pathology, and a Bachelor and Master of Medical Sciences in Traditional Chinese Medicine — a clinical framework that translates classical observation into the measurable language of modern physiology.
+        </p>
+        <p>
+          Her background spans laboratory research, clinical practice, and university-level teaching across two countries and two disciplines. She has contributed to peer-reviewed immunology research, presented her work at international scientific congresses, and spent nearly two decades in direct patient care — working specifically with the patterns of sleep disruption, chronic fatigue, and autonomic dysregulation that this book was written to address.
+        </p>
+        <div class="credential-list">
+          <span class="cred-tag">HCPC Registered</span>
+          <span class="cred-tag">IBMS Member</span>
+          <span class="cred-tag">BSc Biomedical Sciences</span>
+          <span class="cred-tag">MMedSci TCM</span>
+          <span class="cred-tag">Regulation Thermography</span>
+        </div>
+      </div>
+    </div>
+    <div class="science-note">
+      <p>
+        <strong>A note on scientific rigour:</strong> Every claim in this book is grounded in peer-reviewed research or clinical observation documented across decades of practice. Where TCM concepts are used, they are translated into the measurable language of modern physiology. Where the science is still emerging or contested, that is stated explicitly. This is not wellness content. It is clinical education.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Buy section -->
+<div class="buy-section">
+  <div class="buy-inner">
+    <div style="text-align: center; margin-bottom: 44px;">
+      <span class="section-label" style="color: rgba(245,200,66,0.7); display: inline-block;">Get The Book</span>
+      <h2 style="font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 400; color: var(--white); margin-top: 8px;">Give your body the conditions<br>it already knows how to use.</h2>
+    </div>
+    <div class="buy-card">
+      <span class="buy-eyebrow">The Body Remembers</span>
+      <h3 class="buy-title">The Body <em>Remembers</em></h3>
+      <p class="buy-subtitle">A Bio-Regulation Protocol — PDF Ebook</p>
+      <hr class="buy-divider">
+      <ul class="buy-includes">
+        <li>60-page clinical ebook — Introduction through Closing Note</li>
+        <li>Six full chapters covering circadian biology, TCM framework, and complete protocol</li>
+        <li>Eight clinical tools including Pattern Matrix, Symptom Decoder, and Horarium reference</li>
+        <li>The complete Evening Anchor Protocol with timestamped implementation guide</li>
+        <li>The 7-Day Implementation Schedule</li>
+        <li>Instant PDF download — read on any device</li>
+      </ul>
+      <div class="buy-price-row">
+        <span class="buy-price">$29</span>
+        <span class="buy-price-note">One-time payment<br>No subscription. Yours to keep.</span>
+      </div>
+      <a class="btn-buy" href="https://gumroad.com/l/thebodyremembers">Get Instant Access — $29 →</a>
+      <p class="buy-guarantee">Secure checkout via Gumroad · Instant PDF delivery · All major cards accepted</p>
+      <div class="buy-free-wrap">
+        <a class="buy-free-link" href="optin.html">Not ready yet? Get the free 7-Day Diary first</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<section>
+  <div class="container">
+    <span class="section-label">Questions</span>
+    <h2 class="section-head">What people ask before buying</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question">Is this evidence-based or is it alternative medicine?</div>
+        <div class="faq-answer">Both. The circadian biology in this book is Nobel Prize-winning science. The TCM framework is presented as a clinical observation system that modern physiology has confirmed in its broad outlines — with careful translation between classical terminology and measurable physiology throughout. Where the evidence is strong, it is cited. Where it is emerging or contested, that is stated explicitly.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">I'm not sleeping well but I don't have a diagnosis. Is this relevant to me?</div>
+        <div class="faq-answer">This book was written precisely for that situation. The gap between "no diagnosis" and "not functioning well" is the territory this framework was built to navigate. Circadian desynchrony — the underlying condition this protocol addresses — does not show up on standard bloodwork. It shows up as the patterns you're already experiencing.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Do I need any background in TCM or biology to use this?</div>
+        <div class="faq-answer">No. Every concept is explained from first principles. TCM terminology is always grounded in physiological terms immediately after it's introduced. If you understand that your heart beats and your liver processes what you eat, you have sufficient background to follow everything in this book.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Can I use this alongside medication?</div>
+        <div class="faq-answer">Yes. The protocol works with the body's own regulatory systems and does not interact with medication. However, if you are taking medication for sleep, anxiety, or cardiovascular conditions, be aware that the protocol may reduce your need for that medication over time. Discuss any changes with your prescribing clinician. This book does not constitute medical advice.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">How quickly will I notice a difference?</div>
+        <div class="faq-answer">The first noticeable shifts — easier sleep onset, reduced 3 AM waking, improved morning quality — typically appear within 7–14 days of consistent implementation. Deeper regulatory shifts take 4–8 weeks to consolidate. The protocol is not a treatment that ends. It is a relationship with your own biology that deepens over time.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">What format is the book delivered in?</div>
+        <div class="faq-answer">Instant PDF download via Gumroad. Formatted for reading on screen on any device — desktop, tablet, or phone. Designed to be consulted repeatedly, not read once and filed away.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-brand">Sleep Entangled</span>
+    <span class="footer-tagline">Where physics dreams, and dreams remember the universe</span>
+  </div>
+</footer>
+
+<!-- Sticky CTA -->
+<div class="sticky-cta" id="stickyCta">
+  <span class="sticky-cta-text"><strong>The Body Remembers</strong> — instant PDF download</span>
+  <a class="btn-sticky" href="https://gumroad.com/l/thebodyremembers">Get It Now — $29</a>
+</div>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-question').addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Sticky CTA — show after scrolling past hero
+  const stickyCta = document.getElementById('stickyCta');
+  const hero = document.querySelector('.hero');
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      stickyCta.classList.toggle('visible', !entry.isIntersecting);
+    },
+    { threshold: 0 }
+  );
+  observer.observe(hero);
+</script>
+
+</body>
+</html>
